@@ -42,7 +42,7 @@ public class JpaTest {
 		q.setParameter("id", 1517);
 		Meeting m = (Meeting) q.getSingleResult();
 		assertEquals("unccd", m.getTreaty());
-		assertEquals(1517, m.getTitles().get(0).getId());
+		assertEquals(1517, m.getMeetingTitle().getId());
 		em.close();
 	}
 

@@ -1,14 +1,14 @@
 package edw.olingo.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,13 +45,13 @@ public class Meeting {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updated;
 
-//	@OneToOne(mappedBy="meeting", fetch=FetchType.EAGER)
+	@OneToOne(mappedBy="meeting", fetch=FetchType.EAGER)
 //	@JoinColumn(name="id", referencedColumnName="meeting_id", updatable=false, nullable=true)
-//	private MeetingTitle meetingTitle;
+	private MeetingTitle meetingTitle;
 
 	
-	@OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL)
-	private List<MeetingTitle> titles = new ArrayList<MeetingTitle>();
+//	@OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL)
+//	private List<MeetingTitle> titles = new ArrayList<MeetingTitle>();
 
 	public long getId() {
 		return id;
@@ -197,20 +197,20 @@ public class Meeting {
 		this.updated = updated;
 	}
 
-	public List<MeetingTitle> getTitles() {
-		return titles;
-	}
-
-	public void setTitles(List<MeetingTitle> titles) {
-		this.titles = titles;
-	}
-
-//	public MeetingTitle getMeetingTitle() {
-//		return meetingTitle;
+//	public List<MeetingTitle> getTitles() {
+//		return titles;
 //	}
 //
-//	public void setMeetingTitle(MeetingTitle meetingTitle) {
-//		this.meetingTitle = meetingTitle;
+//	public void setTitles(List<MeetingTitle> titles) {
+//		this.titles = titles;
 //	}
+
+	public MeetingTitle getMeetingTitle() {
+		return meetingTitle;
+	}
+
+	public void setMeetingTitle(MeetingTitle meetingTitle) {
+		this.meetingTitle = meetingTitle;
+	}
 
 }

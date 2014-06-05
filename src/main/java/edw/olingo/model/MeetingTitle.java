@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +18,8 @@ public class MeetingTitle {
 	@Column(length=400)
 	private String title;
 
-	@ManyToOne
+//	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "meeting_id", referencedColumnName = "id")
 	private Meeting meeting;
 	
